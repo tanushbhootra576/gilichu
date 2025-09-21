@@ -17,6 +17,7 @@ const notificationRoutes = require('./routes/notification.routes');
 const alertRoutes = require('./routes/alert.routes');
 const predictRoutes = require('./routes/predict.routes');
 const uploadRoutes = require('./routes/upload.routes');
+const mailRoutes = require('./routes/mail.routes');
 
 const app = express();
 const server = http.createServer(app);
@@ -82,6 +83,7 @@ app.use('/api/notifications', notificationRoutes);
 app.use('/api/alerts', alertRoutes);
 app.use('/api/uploads', uploadRoutes);
 app.use('/api/predict', predictRoutes);
+app.use('/api/mail', mailRoutes);
 
 // Root route
 app.get('/', (req, res) => {

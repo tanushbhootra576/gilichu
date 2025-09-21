@@ -161,7 +161,8 @@ issueSchema.add({
     reporters: [{
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
         consent: { type: Boolean, default: true }, // creator auto-consents; merged reporters start as null until response
-        joinedAt: { type: Date, default: Date.now }
+        joinedAt: { type: Date, default: Date.now },
+        isActive: { type: Boolean, default: false }
     }],
     thumbnailImage: { type: String } // first reporter's first image becomes thumbnail
 });
@@ -178,7 +179,12 @@ issueSchema.pre('save', function(next) {
         if (!Array.isArray(this.reporters)) this.reporters = [];
         if (this.reportedBy && !this.reporters.some(r => r.user?.toString() === this.reportedBy.toString())) {
             log('[IssueModel][pre-save] Adding creator to reporters user=', this.reportedBy.toString());
-            this.reporters.push({ user: this.reportedBy, consent: true, joinedAt: new Date() });
+            this.reporters.push({ 
+                user: this.reportedBy, 
+                consent: true, 
+                joinedAt: new Date(),
+                isActive: true // Set original reporter as active by default
+            });
         }
     }
     next();
