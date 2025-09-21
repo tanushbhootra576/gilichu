@@ -1,24 +1,138 @@
-.top-utility-bar {    position: fixed;    top: 0;    left: 0;    width: 100vw;    z-index: 1000;    background: #f5f7fa;    border-bottom: 2px solid #e67e22;    display: flex;    align-items: center;    gap: 8px;    padding: 6px 18px;    font-size: 1rem;    box-shadow: 0 2px 8px rgba(10, 46, 99, 0.04);}.top-utility-bar-gov {  position: fixed;  top: 0;  left: 0;  width: 100vw;  z-index: 1000;  background: #f8fafc;  border-bottom: 2px solid #e67e22;  display: flex;  align-items: center;  justify-content: space-between;  padding: 6px 32px 6px 24px;  font-size: 1rem;  box-shadow: 0 2px 8px rgba(10,46,99,0.04);  height: 44px;  gap: 12px;}.top-utility-left .gov-india-label {  font-weight: 600;  color: #0a2e63;  font-size: 1.08rem;  letter-spacing: 0.5px;}.top-utility-right {  display: flex;  align-items: center;  gap: 8px;  flex-wrap: wrap;}.tub-label {  font-weight: 500;  color: #0a2e63;  margin-right: 8px;}.tub-btn {    background: #fff;    border: 1px solid #bfc9d1;    border-radius: 4px;    padding: 2px 10px;    font-size: 1rem;    cursor: pointer;    transition: background 0.2s, border 0.2s;}.tub-btn:hover {    background: #e9ecef;    border-color: #0a2e63;}.tub-divider {    display: inline-block;    width: 1px;    height: 22px;    background: #bfc9d1;    margin: 0 10px;}/* Google Translate selector styling */#google_translate_element {  margin-left: 16px;  min-width: 140px;}body.dark-mode {    background: #181c24 !important;    color: #f5f7fa !important;}body.dark-mode .top-utility-bar {    background: #23272f;    border-bottom: 2px solid #e67e22;}body.dark-mode .tub-btn {    background: #23272f;    color: #f5f7fa;    border: 1px solid #444;}@media (max-width: 600px) {  .top-utility-bar-gov {    flex-direction: column;    align-items: flex-start;    padding: 6px 8px;    height: auto;  }  .top-utility-right {    margin-top: 4px;    gap: 4px;  }}
+.top-utility-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background: #f5f7fa;
+    border-bottom: 2px solid #e67e22;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(10, 46, 99, 0.04);
+}
+
+.top-utility-bar-gov {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background: #f8fafc;
+    border-bottom: 2px solid #e67e22;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 32px 6px 24px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(10, 46, 99, 0.04);
+    height: 44px;
+    gap: 12px;
+}
+
+.top-utility-left .gov-india-label {
+    font-weight: 600;
+    color: #0a2e63;
+    font-size: 1.08rem;
+    letter-spacing: 0.5px;
+}
+
+.top-utility-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tub-label {
+    font-weight: 500;
+    color: #0a2e63;
+    margin-right: 8px;
+}
+
+.tub-btn {
+    background: #fff;
+    border: 1px solid #bfc9d1;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+}
+
+.tub-btn:hover {
+    background: #e9ecef;
+    border-color: #0a2e63;
+}
+
+.tub-divider {
+    display: inline-block;
+    width: 1px;
+    height: 22px;
+    background: #bfc9d1;
+    margin: 0 10px;
+}
+
+/* Google Translate selector styling */
+#google_translate_element {
+    margin-left: 16px;
+    min-width: 140px;
+}
+
+body.dark-mode {
+    background: #181c24 !important;
+    color: #f5f7fa !important;
+}
+
+body.dark-mode .top-utility-bar {
+    background: #23272f;
+    border-bottom: 2px solid #e67e22;
+}
+
+body.dark-mode .tub-btn {
+    background: #23272f;
+    color: #f5f7fa;
+    border: 1px solid #444;
+}
+
+@media (max-width: 600px) {
+    .top-utility-bar-gov {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 6px 8px;
+        height: auto;
+    }
+
+    .top-utility-right {
+        margin-top: 4px;
+        gap: 4px;
+    }
+}
 
 /* Responsive styles */
 @media (max-width: 700px) {
-  .top-utility-bar-gov {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 8px 8px 12px;
-    height: auto;
-    gap: 6px;
-  }
-  .top-utility-right {
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-  }
-  #google_translate_element {
-    margin-left: 0;
-    margin-top: 6px;
-  }
-  .tub-label {
-    margin-right: 4px;
-  }
+    .top-utility-bar-gov {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 8px 8px 12px;
+        height: auto;
+        gap: 6px;
+    }
+
+    .top-utility-right {
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+    }
+
+    #google_translate_element {
+        margin-left: 0;
+        margin-top: 6px;
+    }
+
+    .tub-label {
+        margin-right: 4px;
+    }
 }

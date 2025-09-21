@@ -5,12 +5,9 @@ node_modules/
 **/node_modules/
 
 # Environment variables (project-wide)
-.env
-.env.local
 .env.development.local
 .env.test.local
 .env.production.local
-**/.env
 **/.env.local
 
 # Firebase credentials and service account keys
@@ -140,3 +137,4 @@ pip-wheel-metadata/
 .idea/
 .DS_Store
 *.log
+config.bat

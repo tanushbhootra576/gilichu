@@ -1,125 +1,126 @@
 .auth-gov-bg {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 40px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
 }
 
 .auth-gov-header {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 24px;
 }
 
 .gov-emblem {
-  width: 54px;
-  height: 54px;
+    width: 54px;
+    height: 54px;
 }
 
 .gov-title {
-  font-size: 2.2rem;
-  color: #0a2e63;
-  font-weight: bold;
-  margin: 0;
-  letter-spacing: 1px;
+    font-size: 2.2rem;
+    color: #0a2e63;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 1px;
 }
 
 .gov-tagline {
-  font-size: 1rem;
-  color: #e67e22;
-  font-weight: 500;
-  margin-top: 2px;
+    font-size: 1rem;
+    color: #e67e22;
+    font-weight: 500;
+    margin-top: 2px;
 }
 
 .auth-gov-card {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 4px 24px rgba(10, 46, 99, 0.08);
-  padding: 36px 32px 28px 32px;
-  min-width: 340px;
-  max-width: 95vw;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(10, 46, 99, 0.08);
+    padding: 36px 32px 28px 32px;
+    min-width: 340px;
+    max-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .gov-form-title {
-  color: #0a2e63;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 18px;
-  text-align: center;
+    color: #0a2e63;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    text-align: center;
 }
 
 .gov-error {
-  background: #ffeaea;
-  color: #b71c1c;
-  border: 1px solid #ffb3b3;
-  border-radius: 6px;
-  padding: 8px 12px;
-  margin-bottom: 14px;
-  text-align: center;
+    background: #ffeaea;
+    color: #b71c1c;
+    border: 1px solid #ffb3b3;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    text-align: center;
 }
 
 .gov-input {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 18px;
-  border: 1px solid #bfc9d1;
-  border-radius: 6px;
-  font-size: 1rem;
-  background: #f9fafb;
-  transition: border 0.2s;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1px solid #bfc9d1;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9fafb;
+    transition: border 0.2s;
 }
 
 .gov-input:focus {
-  border: 1.5px solid #0a2e63;
-  outline: none;
-  background: #fff;
+    border: 1.5px solid #0a2e63;
+    outline: none;
+    background: #fff;
 }
 
 .gov-btn {
-  width: 100%;
-  background: linear-gradient(90deg, #0a2e63 60%, #e67e22 100%);
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  padding: 12px 0;
-  font-size: 1.1rem;
-  cursor: pointer;
-  margin-bottom: 8px;
-  transition: background 0.2s;
+    width: 100%;
+    background: linear-gradient(90deg, #0a2e63 60%, #e67e22 100%);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: background 0.2s;
 }
 
 .gov-btn:hover {
-  background: linear-gradient(90deg, #0a2e63 40%, #e67e22 100%);
+    background: linear-gradient(90deg, #0a2e63 40%, #e67e22 100%);
 }
 
 .gov-register-link {
-  text-align: center;
-  margin-top: 10px;
-  color: #0a2e63;
-  font-size: 0.98rem;
+    text-align: center;
+    margin-top: 10px;
+    color: #0a2e63;
+    font-size: 0.98rem;
 }
 
 .gov-register-link a {
-  color: #e67e22;
-  text-decoration: underline;
-  font-weight: 500;
+    color: #e67e22;
+    text-decoration: underline;
+    font-weight: 500;
 }
 
 @media (max-width: 500px) {
-  .auth-gov-card {
-    min-width: 90vw;
-    padding: 22px 8vw 18px 8vw;
-  }
-  .auth-gov-header {
-    flex-direction: column;
-    gap: 8px;
-  }
+    .auth-gov-card {
+        min-width: 90vw;
+        padding: 22px 8vw 18px 8vw;
+    }
+
+    .auth-gov-header {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
