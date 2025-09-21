@@ -4,8 +4,51 @@ const { validationResult } = require('express-validator');
 const { computePriority } = require('../utils/priority');
 const { uploadBuffer } = require('../config/cloudinary');
 const { log, warn, error } = require('../utils/logger');
+const mailController = require('./mail.controller');
 
 class IssueController {
+    // Government map feed: unresolved issues with coordinates only
+    async getUnresolvedIssuesCoordinates(req, res) {
+        try {
+            if (!req.user || req.user.role !== 'government') {
+                return res.status(403).json({ success: false, error: 'Forbidden' });
+            }
+
+            // Canonical issues only (exclude merged duplicates), status not resolved
+            const filter = {
+                mergedInto: { $exists: false },
+                status: { $ne: 'resolved' },
+                // Ensure coordinates exist
+                'location.coordinates.0': { $exists: true },
+                'location.coordinates.1': { $exists: true }
+            };
+
+            const issues = await Issue.find(filter)
+                .select('_id title status category priority location.coordinates location.address thumbnailImage createdAt')
+                .lean();
+
+            const data = (issues || []).map(doc => {
+                const coords = Array.isArray(doc.location?.coordinates) ? doc.location.coordinates : [];
+                const [lng, lat] = coords;
+                return {
+                    id: doc._id,
+                    title: doc.title,
+                    status: doc.status,
+                    category: doc.category,
+                    priority: doc.priority || 'low',
+                    address: doc.location?.address || '',
+                    coordinates: { lat, lng },
+                    thumbnailImage: doc.thumbnailImage || null,
+                    date: doc.createdAt
+                };
+            }).filter(p => Number.isFinite(p.coordinates?.lat) && Number.isFinite(p.coordinates?.lng));
+
+            return res.json({ success: true, data });
+        } catch (e) {
+            console.error('[getUnresolvedIssuesCoordinates] error', e);
+            return res.status(500).json({ success: false, error: 'Failed to fetch unresolved issues for map', message: e.message });
+        }
+    }
     // Get all issues with comprehensive filtering and pagination
     async getAllIssues(req, res) {
         try {
@@ -884,6 +927,19 @@ class IssueController {
                     type: 'resolution',
                     timestamp: new Date()
                 });
+
+                // Save the issue first to ensure all data is persisted
+                await issue.save();
+
+                // Send email notifications to all active reporters
+                try {
+                    log('[updateIssueStatus] Sending resolution emails for issue:', issue._id.toString());
+                    const emailResult = await mailController.sendIssueResolutionEmail(issue._id.toString(), req.user.id);
+                    log('[updateIssueStatus] Email notification result:', emailResult);
+                } catch (emailError) {
+                    // Log the error but don't fail the status update
+                    error('[updateIssueStatus] Failed to send resolution emails:', emailError);
+                }
             } else {
                 // Add status change notification
                 issue.notifications.push({
@@ -891,9 +947,10 @@ class IssueController {
                     type: 'status_change',
                     timestamp: new Date()
                 });
+                
+                // Save the issue for non-resolution status changes
+                await issue.save();
             }
-
-            await issue.save();
 
             // Propagate status to duplicates (read-only display consistency) except if status is pending and duplicates may remain individualized
             if (Array.isArray(issue.duplicates) && issue.duplicates.length) {

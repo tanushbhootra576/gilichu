@@ -16,16 +16,26 @@ const createTestTransporter = () => {
 // Create a production transporter
 const createProductionTransporter = () => {
     return nodemailer.createTransport({
-        service: process.env.EMAIL_SERVICE, // e.g., 'gmail'
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    });
+         host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // true for 465
+            auth: {
+                    user: process.env.SMTP_USER, // your email
+                   pass: process.env.SMTP_PASS  // your app password
+             }
+        });
 };
 
-// Get the appropriate transporter based on environment
+// Get the appropriate transporter based on environment and available credentials
 const getTransporter = () => {
+    // If we have Gmail credentials configured, use Gmail regardless of environment
+    if (process.env.SMTP_USER && process.env.SMTP_PASS && 
+        process.env.SMTP_USER.includes('gmail.com')) {
+        console.log('Using Gmail transporter with configured credentials');
+        return createProductionTransporter();
+    }
+    
+    // Fallback to environment-based selection
     return process.env.NODE_ENV === 'production'
         ? createProductionTransporter()
         : createTestTransporter();

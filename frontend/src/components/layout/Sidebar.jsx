@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { IconDashboard, IconPredict, IconNotes, IconBell, IconPlus, IconHourglass, IconCheckCircle, IconChart, IconAlert, IconUser, IconSettings } from '../common/Icons';
+import { IconDashboard, IconPredict, IconNotes, IconBell, IconPlus, IconHourglass, IconCheckCircle, IconChart, IconAlert, IconUser, IconSettings, IconLocation } from '../common/Icons';
 
 // Custom SVG icon for Predict Issues
 // const IconPredict = () => (
@@ -71,6 +71,7 @@ const Sidebar = ({ isOpen }) => {
 
                     {isGovernment && (
                         <>
+                          
                             <li>
                                 <NavLink
                                     to="/dashboard/pending-issues"
@@ -109,11 +110,20 @@ const Sidebar = ({ isOpen }) => {
                             </li>
                             <li>
                                 <NavLink
-                                    to="/predict"
+                                    to="/dashboard/predict"
                                     className={({ isActive }) => isActive ? 'active' : ''}
                                 >
                                     <span className="icon"><IconPredict /></span>
                                     <span>Predict Issues</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/dashboard/map"
+                                    className={({ isActive }) => isActive ? 'active' : ''}
+                                >
+                                    <span className="icon"><IconLocation /></span>
+                                    <span>Map</span>
                                 </NavLink>
                             </li>
                         </>

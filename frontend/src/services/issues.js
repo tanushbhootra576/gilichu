@@ -761,6 +761,20 @@ export const getIssueTracking = async (issueId) => {
     }
 };
 
+// Get unresolved issues for the map
+export const getUnresolvedIssuesForMap = async () => {
+    try {
+        const response = await axios.get('/issues/map/unresolved');
+        const payload = response.data;
+        if (payload.success && Array.isArray(payload.data)) {
+            return { success: true, data: payload.data };
+        }
+        return { success: true, data: [] };
+    } catch (error) {
+        return handleApiError(error);
+    }
+};
+
 export default {
     getPendingIssues,
     getInProgressIssues,
@@ -777,5 +791,6 @@ export default {
     getIssueTracking,
     getAllIssues,
     getGovernmentOverview,
-    getAllIssuesFull
+    getAllIssuesFull,
+    getUnresolvedIssuesForMap
 };

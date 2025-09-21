@@ -9,7 +9,8 @@
     "build:frontend": "npm --prefix frontend run build"
   },
   "dependencies": {
-    "firebase": "^12.2.1"
+    "firebase": "^12.2.1",
+    "leaflet": "^1.9.4"
   },
   "devDependencies": {
     "concurrently": "^9.0.1"

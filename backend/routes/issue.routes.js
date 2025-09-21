@@ -65,6 +65,9 @@ router.get('/government/overview', authenticate, authorizeGovernment, issueContr
 // Government full list (unpaginated)
 router.get('/all', authenticate, authorizeGovernment, issueController.getAllIssuesFull);
 
+// Government map feed: unresolved issues with coordinates
+router.get('/map/unresolved', authenticate, authorizeGovernment, (req, res) => issueController.getUnresolvedIssuesCoordinates(req, res));
+
 // Retroactive clustering (dedupe existing issues) - government only
 router.post('/cluster/retroactive', authenticate, authorizeGovernment, issueController.retroactiveCluster);
 

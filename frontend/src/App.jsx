@@ -31,6 +31,7 @@ import Profile from './pages/profile/Profile';
 import Settings from './pages/settings/Settings';
 import Notifications from './pages/notifications/Notifications';
 import Predict from './pages/dashboard/Predict.jsx';
+import MapPage from './pages/dashboard/Map.jsx';
 
 // Role-based route components
 const CitizenRoute = ({ children }) => {
@@ -180,12 +181,21 @@ const App = () => {
                   }
                 />
                 <Route
-                  path="/predict"
+                  path="/dashboard/map"
+                  element={
+                    <GovernmentRoute>
+                      <MapPage />
+                    </GovernmentRoute>
+                  }
+                />
+                <Route
+                  path="/dashboard/predict"
                   element={
                     <GovernmentRoute>
                       <Predict />
                     </GovernmentRoute>
                   } />
+               
                 <Route
                   path="/dashboard/alerts"
                   element={

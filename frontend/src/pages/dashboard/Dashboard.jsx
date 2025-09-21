@@ -8,6 +8,7 @@ import api from '../../services/api';
 import { getMyIssues, getPendingIssues, getAllIssues, getGovernmentOverview, getAllIssuesFull } from '../../services/issues';
 import { listNotifications } from '../../services/notifications';
 import '../../styles/dashboard-home.css';
+import GovIssuesMap from '../../components/map/GovIssuesMap';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -192,6 +193,14 @@ const Dashboard = () => {
                         ))}
                     </section>
                     <div className="dashboard-grid">
+                        {user?.role === 'government' && (
+                            <section className="map-section" style={{ gridColumn: '1 / -1' }}>
+                                <div className="section-header">
+                                    <h2>City Issues Map (Unresolved)</h2>
+                                </div>
+                                <GovIssuesMap height={420} />
+                            </section>
+                        )}
                         <section className="recent-issues-section">
                             <div className="section-header"><h2>Recent Issues</h2></div>
                             <div className="issue-list">
